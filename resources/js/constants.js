@@ -1,4 +1,5 @@
 const constants = {
+    saveMessageURI: 'api/message',
     messageLengthStandards: {
         whole: {
             lat: 160,

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var isBuffer = __webpack_require__(19);
 
 /*global toString:true*/
@@ -424,10 +424,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   }
   return adapter;
 }
@@ -502,7 +502,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 3 */
@@ -13420,6 +13420,12 @@ return jQuery;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(18);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -13435,7 +13441,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -13625,7 +13631,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13636,7 +13642,7 @@ var settle = __webpack_require__(22);
 var buildURL = __webpack_require__(24);
 var parseHeaders = __webpack_require__(25);
 var isURLSameOrigin = __webpack_require__(26);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(27);
 
 module.exports = function xhrAdapter(config) {
@@ -13812,7 +13818,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13837,7 +13843,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13849,7 +13855,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13875,15 +13881,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(12);
+__webpack_require__(13);
 module.exports = __webpack_require__(44);
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13893,7 +13899,7 @@ module.exports = __webpack_require__(44);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(13);
+__webpack_require__(14);
 
 window.Vue = __webpack_require__(36);
 
@@ -13910,11 +13916,11 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(14);
+window._ = __webpack_require__(15);
 window.Popper = __webpack_require__(3).default;
 
 /**
@@ -13926,7 +13932,7 @@ window.Popper = __webpack_require__(3).default;
 try {
   window.$ = window.jQuery = __webpack_require__(4);
 
-  __webpack_require__(16);
+  __webpack_require__(17);
 } catch (e) {}
 
 /**
@@ -13935,7 +13941,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(17);
+window.axios = __webpack_require__(5);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -13971,7 +13977,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31083,10 +31089,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(15)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31114,7 +31120,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35064,12 +35070,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(18);
-
-/***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35077,7 +35077,7 @@ module.exports = __webpack_require__(18);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var Axios = __webpack_require__(20);
 var defaults = __webpack_require__(2);
 
@@ -35112,9 +35112,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(11);
 axios.CancelToken = __webpack_require__(34);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35267,7 +35267,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -35700,7 +35700,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(31);
-var isCancel = __webpack_require__(9);
+var isCancel = __webpack_require__(10);
 var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(32);
 var combineURLs = __webpack_require__(33);
@@ -35860,7 +35860,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(11);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -47178,7 +47178,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
 /* 39 */
@@ -47342,7 +47342,13 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__constants__ = __webpack_require__(42);
+//
+//
+//
+//
 //
 //
 //
@@ -47382,7 +47388,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             text: '',
-            doTransliterare: false
+            doTransliterare: false,
+            errors: []
         };
     },
     computed: {
@@ -47392,12 +47399,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         messageCount: function messageCount() {
             if (!this.charCount) return 0;
             if (this.doTransliterare) {
-                if (this.charCount > __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.whole.lat) {
-                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.partial.lat);
+                if (this.charCount > __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].messageLengthStandards.whole.lat) {
+                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].messageLengthStandards.partial.lat);
                 } else return 1;
             } else {
-                if (this.charCount > __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.whole.ru) {
-                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.partial.ru);
+                if (this.charCount > __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].messageLengthStandards.whole.ru) {
+                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].messageLengthStandards.partial.ru);
                 } else return 1;
             }
         }
@@ -47406,7 +47413,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         transliterate: function transliterate(direction) {
             var regexp = null;
             var newText = this.text;
-            __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].TranslitTable.forEach(function (char) {
+            __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].TranslitTable.forEach(function (char) {
                 regexp = new RegExp(char.ru, 'g');
                 newText = newText.replace(regexp, char.lat);
             });
@@ -47415,7 +47422,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         untransliterate: function untransliterate() {
             var regexp = null;
             var newText = this.text;
-            __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].TranslitTable.forEach(function (char) {
+            __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].TranslitTable.forEach(function (char) {
                 regexp = new RegExp(char.lat, 'g');
                 newText = newText.replace(regexp, char.ru);
             });
@@ -47427,6 +47434,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 this.untransliterate();
             }
+        },
+        save: function save() {
+            var _this = this;
+
+            var data = {
+                text: this.text,
+                count: this.messageCount
+            };
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1__constants__["a" /* default */].saveMessageURI, data).then(function (reposnse) {
+                console.info("Message saved");
+            }).catch(function (e) {
+                _this.errors.push(e);
+            });
         }
     }
 });
@@ -47437,6 +47457,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 var constants = {
+    saveMessageURI: 'api/message',
     messageLengthStandards: {
         whole: {
             lat: 160,
@@ -47463,6 +47484,14 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
+        _vm.errors.length
+          ? _c(
+              "div",
+              { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+              [_c("pre", [_vm._v(_vm._s(_vm.errors))])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header text-center" }, [
             _vm._v("Онлайн транслитерация")
@@ -47565,6 +47594,14 @@ var render = function() {
                 ]
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer text-right" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", on: { click: _vm.save } },
+              [_vm._v("Сохранить")]
+            )
           ])
         ])
       ])

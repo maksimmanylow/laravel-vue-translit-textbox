@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+                <div v-if="errors.length" class="alert alert-danger" role="alert">
+                    <pre>{{errors}}</pre>
+                </div>
+
                 <div class="card card-default">
                     <div class="card-header text-center">Онлайн транслитерация</div>
 
@@ -19,10 +24,9 @@
                             </label>
                         </div>
                     </div>
-                    <!-- <div class="card-footer text-right">
-                            <button class="btn btn-primary" @click="transliterate">Транслитерировать</button>
-                            <button class="btn btn-warning" @click="untransliterate">Растранслитерировать</button>
-                    </div> -->
+                    <div class="card-footer text-right">
+                            <button class="btn btn-primary" @click="save">Сохранить</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,13 +34,14 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import C from '../constants';
 
     export default {
         data: () => ({
             text: '',
-            doTransliterare: false
+            doTransliterare: false,
+            errors: []
             }),
         computed: {
             charCount: function () {return this.text.length;},
@@ -79,6 +84,17 @@ import C from '../constants';
                 } else {
                     this.untransliterate();
                 }
+            },
+            save: function () {
+                const data = {
+                    text: this.text,
+                    count: this.messageCount
+                };
+                axios.post(C.saveMessageURI, data)
+                    .then(reposnse => {
+                        console.info("Message saved");
+                     } )
+                    .catch(e => {this.errors.push(e)});
             }
         }
     }
