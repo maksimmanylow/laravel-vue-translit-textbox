@@ -3,15 +3,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Транслит текстбокс</div>
+                    <div class="card-header text-center">Онлайн транслитерация</div>
 
                     <div class="card-body">
                         <div class="form-group">
                             <textarea class="form-control" v-model="text" rows="10" cols="40"/>
                         </div>
-                        <div>Символов введено: {{charCount}}</div>
-                        <button @click="transliterate">Транслитерировать</button>
-                        <button @click="untransliterate">Растранслитерировать</button>
+                        <div class="float-right">Символов введено <span class="badge badge-dark">{{charCount}}</span></div>
+                        <div class="form-check">
+                            <input @change="doSomething" v-model="doTransliterare" class="form-check-input" type="checkbox"  id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                транслитерировать
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                            <button class="btn btn-primary" @click="transliterate">Транслитерировать</button>
+                            <button class="btn btn-warning" @click="untransliterate">Растранслитерировать</button>
                     </div>
                 </div>
             </div>
@@ -26,6 +34,7 @@ import C from '../constants';
     export default {
         data: () => ({
             text: '',
+            doTransliterare: false
             }),
         computed: {
             charCount: function () {return this.text.length;},
@@ -40,7 +49,7 @@ import C from '../constants';
                 });
                 this.text = newText;
             },
-        untransliterate: function () {
+            untransliterate: function () {
                 let regexp = null;
                 let newText = this.text;
                 C.TranslitTable.forEach(char => {
@@ -48,6 +57,13 @@ import C from '../constants';
                     newText = newText.replace(regexp, char.ru);
                 });
                 this.text = newText;
+            },
+            doSomething: function () {
+                if (this.doTransliterare) {
+                    this.transliterate();
+                } else {
+                    this.untransliterate();
+                }
             }
         }
     }

@@ -47364,6 +47364,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -47371,7 +47379,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            text: ''
+            text: '',
+            doTransliterare: false
         };
     },
     computed: {
@@ -47397,6 +47406,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 newText = newText.replace(regexp, char.ru);
             });
             this.text = newText;
+        },
+        doSomething: function doSomething() {
+            if (this.doTransliterare) {
+                this.transliterate();
+            } else {
+                this.untransliterate();
+            }
         }
     }
 });
@@ -47424,8 +47440,8 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Транслит текстбокс")
+          _c("div", { staticClass: "card-header text-center" }, [
+            _vm._v("Онлайн транслитерация")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -47453,15 +47469,89 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _c("div", [_vm._v("Символов введено: " + _vm._s(_vm.charCount))]),
-            _vm._v(" "),
-            _c("button", { on: { click: _vm.transliterate } }, [
-              _vm._v("Транслитерировать")
+            _c("div", { staticClass: "float-right" }, [
+              _vm._v("Символов введено "),
+              _c("span", { staticClass: "badge badge-dark" }, [
+                _vm._v(_vm._s(_vm.charCount))
+              ])
             ]),
             _vm._v(" "),
-            _c("button", { on: { click: _vm.untransliterate } }, [
-              _vm._v("Растранслитерировать")
+            _c("div", { staticClass: "form-check" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.doTransliterare,
+                    expression: "doTransliterare"
+                  }
+                ],
+                staticClass: "form-check-input",
+                attrs: { type: "checkbox", id: "defaultCheck1" },
+                domProps: {
+                  checked: Array.isArray(_vm.doTransliterare)
+                    ? _vm._i(_vm.doTransliterare, null) > -1
+                    : _vm.doTransliterare
+                },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$a = _vm.doTransliterare,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.doTransliterare = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.doTransliterare = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.doTransliterare = $$c
+                      }
+                    },
+                    _vm.doSomething
+                  ]
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "form-check-label",
+                  attrs: { for: "defaultCheck1" }
+                },
+                [
+                  _vm._v(
+                    "\n                            транслитерировать\n                        "
+                  )
+                ]
+              )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                on: { click: _vm.transliterate }
+              },
+              [_vm._v("Транслитерировать")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-warning",
+                on: { click: _vm.untransliterate }
+              },
+              [_vm._v("Растранслитерировать")]
+            )
           ])
         ])
       ])
