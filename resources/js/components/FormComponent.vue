@@ -3,11 +3,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Транслит текстбокс</div>
 
                     <div class="card-body">
-                        <textarea v-model="value" />
-                        <span>Символов введено: {{charCount}}</span>
+                        <div class="form-group">
+                            <textarea class="form-control" v-model="text" rows="10" cols="40"/>
+                        </div>
+                        <div>Символов введено: {{charCount}}</div>
                         <button @click="transliterate">Транслитерировать</button>
                         <button @click="untransliterate">Растранслитерировать</button>
                     </div>
@@ -19,31 +21,33 @@
 
 <script>
 
+import C from '../constants';
+
     export default {
         data: () => ({
-            value: '',
+            text: '',
             }),
         computed: {
-            charCount: function () {return this.value.length;},
+            charCount: function () {return this.text.length;},
         },
         methods: {
             transliterate: function(direction) {
                 let regexp = null;
-                let newText = text;
-                TranslitTable.forEach(char => {
+                let newText = this.text;
+                C.TranslitTable.forEach(char => {
                     regexp = new RegExp(char.ru, 'g');
                     newText = newText.replace(regexp, char.lat);
                 });
-                this.value = newText;
+                this.text = newText;
             },
         untransliterate: function () {
                 let regexp = null;
-                let newText = text;
-                TranslitTable.forEach(char => {
+                let newText = this.text;
+                C.TranslitTable.forEach(char => {
                     regexp = new RegExp(char.lat, 'g');
                     newText = newText.replace(regexp, char.ru);
                 });
-                this.value = newText;
+                this.text = newText;
             }
         }
     }

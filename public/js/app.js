@@ -13879,7 +13879,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
@@ -47189,7 +47189,7 @@ var normalizeComponent = __webpack_require__(40)
 /* script */
 var __vue_script__ = __webpack_require__(41)
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(43)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47342,6 +47342,7 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(42);
 //
 //
 //
@@ -47359,28 +47360,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    // methods: {
-    //     handleChange: function() {
-
-    //     }
-    // },
     data: function data() {
         return {
-            value: ''
+            text: ''
         };
     },
     computed: {
         charCount: function charCount() {
-            return this.value.length;
+            return this.text.length;
+        }
+    },
+    methods: {
+        transliterate: function transliterate(direction) {
+            var regexp = null;
+            var newText = this.text;
+            __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].TranslitTable.forEach(function (char) {
+                regexp = new RegExp(char.ru, 'g');
+                newText = newText.replace(regexp, char.lat);
+            });
+            this.text = newText;
+        },
+        untransliterate: function untransliterate() {
+            var regexp = null;
+            var newText = this.text;
+            __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].TranslitTable.forEach(function (char) {
+                regexp = new RegExp(char.lat, 'g');
+                newText = newText.replace(regexp, char.ru);
+            });
+            this.text = newText;
         }
     }
 });
 
 /***/ }),
 /* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var constants = {
+    TranslitTable: [{ ru: 'a', lat: 'a' }, { ru: 'А', lat: 'A' }, { ru: 'б', lat: 'b' }, { ru: 'Б', lat: 'B' }, { ru: 'в', lat: 'v' }, { ru: 'В', lat: 'V' }, { ru: 'г', lat: 'g' }, { ru: 'Г', lat: 'G' }, { ru: 'д', lat: 'd' }, { ru: 'Д', lat: 'D' }, { ru: 'е', lat: 'e' }, { ru: 'Е', lat: 'E' }, { ru: 'ё', lat: 'yo' }, { ru: 'Ё', lat: 'Yo' }, { ru: 'ж', lat: 'zh' }, { ru: 'Ж', lat: 'Zh' }, { ru: 'з', lat: 'z' }, { ru: 'З', lat: 'Z' }, { ru: 'и', lat: 'i' }, { ru: 'И', lat: 'I' }, { ru: 'й', lat: 'y' }, { ru: 'Й', lat: 'Y' }, { ru: 'к', lat: 'k' }, { ru: 'К', lat: 'K' }, { ru: 'л', lat: 'l' }, { ru: 'Л', lat: 'L' }, { ru: 'м', lat: 'm' }, { ru: 'М', lat: 'M' }, { ru: 'н', lat: 'n' }, { ru: 'Н', lat: 'N' }, { ru: 'о', lat: 'o' }, { ru: 'О', lat: 'O' }, { ru: 'п', lat: 'p' }, { ru: 'П', lat: 'P' }, { ru: 'р', lat: 'r' }, { ru: 'Р', lat: 'R' }, { ru: 'с', lat: 's' }, { ru: 'С', lat: 'S' }, { ru: 'т', lat: 't' }, { ru: 'Т', lat: 'T' }, { ru: 'у', lat: 'u' }, { ru: 'У', lat: 'U' }, { ru: 'ф', lat: 'f' }, { ru: 'Ф', lat: 'F' }, { ru: 'х', lat: 'h' }, { ru: 'Х', lat: 'H' }, { ru: 'ц', lat: 'ts' }, { ru: 'Ц', lat: 'Ts' }, { ru: 'ч', lat: 'ch' }, { ru: 'Ч', lat: 'Ch' }, { ru: 'ш', lat: 'sh' }, { ru: 'Ш', lat: 'Sh' }, { ru: 'щ', lat: 'sch' }, { ru: 'Щ', lat: 'Sch' }, { ru: 'ъ', lat: '\'' }, { ru: 'Ъ', lat: '\'' }, { ru: 'ы', lat: 'i' }, { ru: 'Ы', lat: 'I' }, { ru: 'ь', lat: '\'' }, { ru: 'Ь', lat: '\'' }, { ru: 'э', lat: 'e' }, { ru: 'Э', lat: 'E' }, { ru: 'ю', lat: 'u' }, { ru: 'Ю', lat: 'U' }, { ru: 'я', lat: 'ya' }, { ru: 'Я', lat: 'Ya' }, { ru: '«', lat: '"' }, { ru: '»', lat: '"' }, { ru: '–', lat: '-' }, { ru: '—', lat: '-' }, { ru: '№', lat: '#' }, { ru: '`', lat: '\'' }]
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (constants);
+
+/***/ }),
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47392,31 +47425,43 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Example Component")
+            _vm._v("Транслит текстбокс")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.value,
-                  expression: "value"
-                }
-              ],
-              domProps: { value: _vm.value },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "form-group" }, [
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.text,
+                    expression: "text"
                   }
-                  _vm.value = $event.target.value
+                ],
+                staticClass: "form-control",
+                attrs: { rows: "10", cols: "40" },
+                domProps: { value: _vm.text },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.text = $event.target.value
+                  }
                 }
-              }
-            }),
+              })
+            ]),
             _vm._v(" "),
-            _c("span", [_vm._v("Символов введено: " + _vm._s(_vm.charCount))])
+            _c("div", [_vm._v("Символов введено: " + _vm._s(_vm.charCount))]),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.transliterate } }, [
+              _vm._v("Транслитерировать")
+            ]),
+            _vm._v(" "),
+            _c("button", { on: { click: _vm.untransliterate } }, [
+              _vm._v("Растранслитерировать")
+            ])
           ])
         ])
       ])
@@ -47434,7 +47479,7 @@ if (false) {
 }
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
