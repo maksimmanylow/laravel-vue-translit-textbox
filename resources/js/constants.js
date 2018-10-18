@@ -1,4 +1,14 @@
 const constants = {
+    messageLengthStandards: {
+        whole: {
+            lat: 160,
+            ru: 70,
+        },
+        partial: {
+            lat: 153,
+            ru: 67,
+        },
+    },
     TranslitTable:[
         {ru: 'a', lat: 'a'},
         {ru: 'А', lat: 'A'},

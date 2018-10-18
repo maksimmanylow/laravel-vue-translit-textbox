@@ -47372,6 +47372,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -47386,6 +47388,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         charCount: function charCount() {
             return this.text.length;
+        },
+        messageCount: function messageCount() {
+            if (!this.charCount) return 0;
+            if (this.doTransliterare) {
+                if (this.charCount > __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.whole.lat) {
+                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.partial.lat);
+                } else return 1;
+            } else {
+                if (this.charCount > __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.whole.ru) {
+                    return Math.ceil(this.charCount / __WEBPACK_IMPORTED_MODULE_0__constants__["a" /* default */].messageLengthStandards.partial.ru);
+                } else return 1;
+            }
         }
     },
     methods: {
@@ -47423,6 +47437,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 var constants = {
+    messageLengthStandards: {
+        whole: {
+            lat: 160,
+            ru: 70
+        },
+        partial: {
+            lat: 153,
+            ru: 67
+        }
+    },
     TranslitTable: [{ ru: 'a', lat: 'a' }, { ru: 'А', lat: 'A' }, { ru: 'б', lat: 'b' }, { ru: 'Б', lat: 'B' }, { ru: 'в', lat: 'v' }, { ru: 'В', lat: 'V' }, { ru: 'г', lat: 'g' }, { ru: 'Г', lat: 'G' }, { ru: 'д', lat: 'd' }, { ru: 'Д', lat: 'D' }, { ru: 'е', lat: 'e' }, { ru: 'Е', lat: 'E' }, { ru: 'ё', lat: 'yo' }, { ru: 'Ё', lat: 'Yo' }, { ru: 'ж', lat: 'zh' }, { ru: 'Ж', lat: 'Zh' }, { ru: 'з', lat: 'z' }, { ru: 'З', lat: 'Z' }, { ru: 'и', lat: 'i' }, { ru: 'И', lat: 'I' }, { ru: 'й', lat: 'y' }, { ru: 'Й', lat: 'Y' }, { ru: 'к', lat: 'k' }, { ru: 'К', lat: 'K' }, { ru: 'л', lat: 'l' }, { ru: 'Л', lat: 'L' }, { ru: 'м', lat: 'm' }, { ru: 'М', lat: 'M' }, { ru: 'н', lat: 'n' }, { ru: 'Н', lat: 'N' }, { ru: 'о', lat: 'o' }, { ru: 'О', lat: 'O' }, { ru: 'п', lat: 'p' }, { ru: 'П', lat: 'P' }, { ru: 'р', lat: 'r' }, { ru: 'Р', lat: 'R' }, { ru: 'с', lat: 's' }, { ru: 'С', lat: 'S' }, { ru: 'т', lat: 't' }, { ru: 'Т', lat: 'T' }, { ru: 'у', lat: 'u' }, { ru: 'У', lat: 'U' }, { ru: 'ф', lat: 'f' }, { ru: 'Ф', lat: 'F' }, { ru: 'х', lat: 'h' }, { ru: 'Х', lat: 'H' }, { ru: 'ц', lat: 'ts' }, { ru: 'Ц', lat: 'Ts' }, { ru: 'ч', lat: 'ch' }, { ru: 'Ч', lat: 'Ch' }, { ru: 'ш', lat: 'sh' }, { ru: 'Ш', lat: 'Sh' }, { ru: 'щ', lat: 'sch' }, { ru: 'Щ', lat: 'Sch' }, { ru: 'ъ', lat: '\'' }, { ru: 'Ъ', lat: '\'' }, { ru: 'ы', lat: 'i' }, { ru: 'Ы', lat: 'I' }, { ru: 'ь', lat: '\'' }, { ru: 'Ь', lat: '\'' }, { ru: 'э', lat: 'e' }, { ru: 'Э', lat: 'E' }, { ru: 'ю', lat: 'u' }, { ru: 'Ю', lat: 'U' }, { ru: 'я', lat: 'ya' }, { ru: 'Я', lat: 'Ya' }, { ru: '«', lat: '"' }, { ru: '»', lat: '"' }, { ru: '–', lat: '-' }, { ru: '—', lat: '-' }, { ru: '№', lat: '#' }, { ru: '`', lat: '\'' }]
 };
 
@@ -47473,6 +47497,15 @@ var render = function() {
               _vm._v("Символов введено "),
               _c("span", { staticClass: "badge badge-dark" }, [
                 _vm._v(_vm._s(_vm.charCount))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "clearfix" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "float-right" }, [
+              _vm._v("Сообщений "),
+              _c("span", { staticClass: "badge badge-dark" }, [
+                _vm._v(_vm._s(_vm.messageCount))
               ])
             ]),
             _vm._v(" "),
@@ -47532,26 +47565,6 @@ var render = function() {
                 ]
               )
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer text-right" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                on: { click: _vm.transliterate }
-              },
-              [_vm._v("Транслитерировать")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning",
-                on: { click: _vm.untransliterate }
-              },
-              [_vm._v("Растранслитерировать")]
-            )
           ])
         ])
       ])

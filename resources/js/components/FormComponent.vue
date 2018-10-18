@@ -10,6 +10,8 @@
                             <textarea class="form-control" v-model="text" rows="10" cols="40"/>
                         </div>
                         <div class="float-right">Символов введено <span class="badge badge-dark">{{charCount}}</span></div>
+                        <div class="clearfix"></div>
+                        <div class="float-right">Сообщений <span class="badge badge-dark">{{messageCount}}</span></div>
                         <div class="form-check">
                             <input @change="doSomething" v-model="doTransliterare" class="form-check-input" type="checkbox"  id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
@@ -17,10 +19,10 @@
                             </label>
                         </div>
                     </div>
-                    <div class="card-footer text-right">
+                    <!-- <div class="card-footer text-right">
                             <button class="btn btn-primary" @click="transliterate">Транслитерировать</button>
                             <button class="btn btn-warning" @click="untransliterate">Растранслитерировать</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -38,6 +40,19 @@ import C from '../constants';
             }),
         computed: {
             charCount: function () {return this.text.length;},
+            messageCount: function () {
+                if (!this.charCount)
+                    return 0;
+                if (this.doTransliterare) {
+                    if (this.charCount > C.messageLengthStandards.whole.lat) {
+                        return Math.ceil(this.charCount / C.messageLengthStandards.partial.lat);
+                    } else return 1;
+                } else {
+                    if (this.charCount > C.messageLengthStandards.whole.ru) {
+                        return Math.ceil(this.charCount / C.messageLengthStandards.partial.ru);
+                    } else return 1;
+                }
+            }
         },
         methods: {
             transliterate: function(direction) {
